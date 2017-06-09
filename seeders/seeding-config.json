@@ -1,0 +1,8 @@
+{
+  "minimum": 10,
+  "genders": ["male", "female", "other"],
+  "maritalState": ["single", "seeing someone", "married", "other"],
+  "maxHeight": 40,
+  "minHeight": 96,
+  "bodyTypes": ["thin", "overweight", "average", "fit", "jacked", "curvy"]
+}
