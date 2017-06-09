@@ -1,4 +1,35 @@
-<h1>Profile here</h1>
 
-{{ profile }}
-{{ profile.gender }}
+
+<header>
+  <div class="row profile-header">
+    <div class="col-md-2">
+      <img class="profile-picture" src="/images/viking_{{ profile.gender }}.jpg" alt="Picture of {{ profile.gender}} viking">
+    </div>
+    <div class="col-md-6 col-md-offset-1">
+      <h1>{{ user.username }}</h1>
+      <h3>{{ profile.age }} years old, lives in </h3>
+    </div>
+  </div>
+</header>
+
+<div class="row">
+  <div class="col-md-8">
+    <h2>About Me</h2>
+    <p>{{ profile.aboutMe }}</p>
+    <h2>Talents</h2>
+    <p>{{ profile.talents }}</p>
+    <h2>Favorite Things</h2>
+    <p>{{ profile.favorites }}</p>
+    <h2>Why Message Me?</h2>
+    <p>{{ profile.whyMessage }}</p>
+  </div>
+  <div class="col-md-3 col-md-offset-1 basic-info">
+    <h3>Basic Info</h3>
+    <p>{{ profile.gender }}</p>
+    <p>{{ profile.maritalStatus }}</p>
+    <p>{{ profile.height }}</p>
+    <p>{{ profile.bodyType }}</p>
+    <p>{{ profile.kids }}</p>
+    <p>{{ profile.occupation }}</p>
+  </div>
+</div>

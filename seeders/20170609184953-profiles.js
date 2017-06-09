@@ -6,6 +6,8 @@ const genders = config.genders;
 const maritalState = config.maritalState;
 const minHeight = config.minHeight;
 const maxHeight = config.maxHeight;
+const minAge = config.minAge;
+const maxAge = config.maxAge;
 const bodyTypes = config.bodyTypes;
 const lorem = require('lorem-ipsum');
 
@@ -43,6 +45,7 @@ module.exports = {
               units: 'sentences' 
             }),
         gender: genders[i % genders.length],
+        age: Math.floor(Math.random() * (maxAge - minAge)) + minAge,
         maritalStatus: maritalState[i % maritalState.length],
         height: Math.floor(Math.random() * (maxHeight - minHeight)) + minHeight,
         bodyType: bodyTypes[i % bodyTypes.length],

@@ -4,5 +4,7 @@
   "maritalState": ["single", "seeing someone", "married", "other"],
   "maxHeight": 40,
   "minHeight": 96,
+  "maxAge": 60,
+  "minAge": 18,
   "bodyTypes": ["thin", "overweight", "average", "fit", "jacked", "curvy"]
 }

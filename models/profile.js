@@ -7,6 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     favorites: DataTypes.TEXT,
     whyMessage: DataTypes.TEXT,
     gender: DataTypes.STRING,
+    age: DataTypes.INTEGER,
     maritalStatus: DataTypes.STRING,
     height: DataTypes.INTEGER,
     bodyType: DataTypes.STRING,

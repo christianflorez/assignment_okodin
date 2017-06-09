@@ -5,3 +5,23 @@
 .navbar * {
   color: white;
 }
+
+.basic-info {
+  border: solid 2px #444;
+  border-radius: 5px;
+}
+.basic-info * {
+  text-transform: capitalize;
+}
+
+.profile-picture {
+  border: solid 2px #444;
+  border-radius: 5px;
+}
+
+.profile-header {
+  border-radius: 5px;
+  background-color: #A3D4FA;
+  padding: 2em 0;
+  margin-bottom: 1em;
+}

@@ -12,15 +12,15 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
+  let aprofile;
   Profile.findById(req.params.id, {
-    include: [{model: User}]
+    include: [{all: true}]
   })
     .then(profile => {
-      console.log(profile);
+      aprofile = profile;
       User.findById(profile.userId)
         .then(user => {
-          console.log(user);
-          res.render('profiles/show', { profile });
+          res.render('profiles/show', { profile: aprofile, user });
         })
     })
     .catch(e => res.status(500).send(e.stack));
