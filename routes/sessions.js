@@ -10,7 +10,7 @@ module.exports = (app) => {
   app.use((req, res, next) => {
     let reqUrl = url.parse(req.url);
     if (!req.session.currentUser &&
-        !['/', '/login', h.sessionsPath()].includes(reqUrl.pathname)) {
+        !['/', '/login', '/users', h.sessionsPath()].includes(reqUrl.pathname)) {
       res.redirect('/login');
     } else {
       next();
@@ -28,7 +28,6 @@ module.exports = (app) => {
       })
         .then(user => {
           res.redirect(h.profilePath(user.profileId));
-          // res.redirect(`/profile/${ user.profileId }`);
         })
         .catch(e => res.status(500).send(e.stack));
     } else {

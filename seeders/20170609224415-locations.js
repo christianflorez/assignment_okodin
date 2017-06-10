@@ -1,6 +1,9 @@
 'use strict';
 const models = require('../models');
-const MIN_SEEDS = require('./seeding-config').MIN_SEEDS;
+const config = require('./seeding-config');
+const MAX_CITIES = config.MAX_CITIES;
+const MAX_DISTANCE = config.MAX_DISTANCE;
+const MIN_SEEDS = config.MIN_SEEDS;
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
@@ -14,15 +17,14 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    let users = [];
-    for (var i = 0; i < MIN_SEEDS; i++) {
-      users.push({
-        username: `foobar${ i }`,
-        email: `foobar${ i }@baz.org`,
-        profileId: i + 1
+    let locations = [];
+    for (let i = 0; i < MIN_SEEDS; i++) {
+      locations.push({
+        cityId: Math.floor(Math.random() * MAX_CITIES),
+        distance: Math.floor(Math.random() * MAX_DISTANCE)
       });
     }
-    return queryInterface.bulkInsert('Users', users);
+    return queryInterface.bulkInsert('Locations', locations);
   },
 
   down: function (queryInterface, Sequelize) {
@@ -33,6 +35,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('Person', null, {});
     */
-    return queryInterface.bulkDelete('Users', null, {}, models.User);
+    return queryInterface.bulkDelete('Locations', null, {}, models.Location);
   }
 };

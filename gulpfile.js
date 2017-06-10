@@ -8,7 +8,7 @@ gulp.task('default', ['browser-sync', 'nodemon'], () => {});
 
 gulp.task('browser-sync', () => {
     browserSync.init(null, {
-        proxy: "localhost:4002", //this should be whatever your app is set to listen on
+        proxy: "localhost:4003", //this should be whatever your app is set to listen on
         browser: "google-chrome",
         port: 7001
     });

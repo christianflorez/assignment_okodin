@@ -1,0 +1,100 @@
+<form action="{{ profilePath profile.id }}" method="post">
+  <header class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <img class="profile-picture" src="/images/viking_{{ profile.gender }}.jpg" alt="Picture of {{ profile.gender}} viking">
+        </div>
+        <div class="col-md-6 col-md-offset-2">
+          <h1>{{ profile.User.username }}</h1>
+          <div class="form-group">
+            <label for="profile_age">Age</label>
+            <input type="number" id="profile_age" name="profile[details][age]" class="form-control" value="{{ profile.age }}">
+          </div>
+          <div class="form-group">
+            <label for="profile_location">Location</label>
+            <input type="text" id="profile_location" name="profile[location][city]" class="form-control" value="{{ profile.Location.City.name }}">
+          </div>
+          <div class="form-group">
+            <label for="profile_distance">Distance</label>
+            <input type="text" id="profile_distance" name="profile[location][distance]" class="form-control" value="{{ profile.Location.distance }}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <input type="hidden" name="_method" value="PUT">
+
+    <div class="row">
+      <div class="col-md-8">
+
+        <h2>About Me</h2>
+        <div class="form-group">
+          <textarea type="text" placeholder="{{ profile.aboutMe }}" value="{{ profile.aboutMe }}" name="profile[details][aboutMe]" class="form-control" rows="4"></textarea>
+        </div>
+        <h2>Talents</h2>
+        <div class="form-group">
+          <textarea type="text" placeholder="{{ profile.talents }}" value="{{ profile.talents }}" name="profile[details][talents]" class="form-control" rows="4"></textarea>
+        </div>
+        <h2>Favorite Things</h2>
+        <div class="form-group">
+          <textarea type="text" placeholder="{{ profile.favorites }}" value="{{ profile.favorites }}" name="profile[details][favorites]" class="form-control" rows="4"></textarea>
+        </div>
+        <h2>Why Message Me?</h2>
+        <div class="form-group">
+          <textarea type="text" placeholder="{{ profile.whyMessage }}" valu="{{ profile.whyMessage }}" name="profile[details][whyMessage]" class="form-control" rows="4"></textarea>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-md-offset-1 basic-info">
+        <h3>Basic Info</h3>
+        <div class="form-group">
+          <label for="profile_gender">Gender</label><br>
+          <input type="radio" name="profile[details][gender]" value="male"> Male<br>
+          <input type="radio" name="profile[details][gender]" value="female"> Female<br>
+          <input type="radio" name="profile[details][gender]" value="other"> Other
+        </div>
+        <div class="form-group">
+          <label for="profile_maritalStatus">Marital Status</label><br>
+          <input type="radio" name="profile[details][maritalStatus]" value="single">Single<br>
+          <input type="radio" name="profile[details][maritalStatus]" value="seeing someone">Seeing Someone<br>
+          <input type="radio" name="profile[details][maritalStatus]" value="married">Married<br>
+          <input type="radio" name="profile[details][maritalStatus]" value="other">Other
+        </div>
+        <div class="form-group">
+          <label for="profile_height">Height (Inches)</label>
+          <input type="number" id="profile_height" name="profile[details][height]" class="form-control" value="{{ profile.height }}">
+        </div>
+        <div class="form-group">
+          <label for="profile_bodyType">Body Type</label><br>
+          <input type="radio" name="profile[details][bodyType]" value="thin">Thin<br>
+          <input type="radio" name="profile[details][bodyType]" value="overweight">Overweight<br>
+          <input type="radio" name="profile[details][bodyType]" value="average">Average<br>
+          <input type="radio" name="profile[details][bodyType]" value="fit">Fit<br>
+          <input type="radio" name="profile[details][bodyType]" value="jacked">Jacked<br>
+          <input type="radio" name="profile[details][bodyType]" value="curvy">Curvy<br>
+        </div>
+        <div class="form-group">
+          <label for="profile_kids">Kids?</label><br>
+          <input type="radio" name="profile[details][kids]" value="true">Yes<br>
+          <input type="radio" name="profile[details][kids]" value="false">No<br>
+        </div>
+        <div class="form-group">
+          <label for="profile_occupation">Occupation</label>
+          <input type="text" id="profile_occupation" name="profile[details][occupation]" class="form-control" value="{{ profile.occupation }}">
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-offset-3 col-md-6">
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary btn-block">
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -21,6 +21,11 @@ module.exports = function(sequelize, DataTypes) {
         Profile.hasOne(models.User, {
           foreignKey: "profileId"
         });
+
+        Profile.belongsTo(models.Location, {
+          foreignKey: "locationId"
+        });
+        
       }
     }
   });

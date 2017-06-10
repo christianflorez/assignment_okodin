@@ -1,7 +1,7 @@
 'use strict';
 const models = require('../models');
 const config = require('./seeding-config');
-const MIN_SEEDS = config.minimum;
+const MIN_SEEDS = config.MIN_SEEDS;
 const genders = config.genders;
 const maritalState = config.maritalState;
 const minHeight = config.minHeight;

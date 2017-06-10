@@ -1,6 +1,6 @@
 const UsersHelper = {};
 
-UsersHelper.usersPath = () => '/users/';
+UsersHelper.usersPath = () => '/users';
 UsersHelper.userPath = (id) => `/users/${ id }`;
 UsersHelper.newUserPath = () => '/users/new';
 UsersHelper.editUserPath = (id) => `/users/${ id }/edit`;

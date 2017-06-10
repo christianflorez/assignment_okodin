@@ -1,10 +1,12 @@
 {
-  "minimum": 10,
+  "MIN_SEEDS": 10,
   "genders": ["male", "female", "other"],
   "maritalState": ["single", "seeing someone", "married", "other"],
-  "maxHeight": 40,
-  "minHeight": 96,
-  "maxAge": 60,
+  "minHeight": 72,
+  "maxHeight": 102,
   "minAge": 18,
-  "bodyTypes": ["thin", "overweight", "average", "fit", "jacked", "curvy"]
+  "maxAge": 60,
+  "bodyTypes": ["thin", "overweight", "average", "fit", "jacked", "curvy"],
+  "MAX_CITIES": 200,
+  "MAX_DISTANCE": 100
 }

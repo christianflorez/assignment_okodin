@@ -1,17 +1,22 @@
-<header class="page-header">
-  <h1>Login</h1>
-</header>
+<div class="container">
+  <header class="page-header">
+    <h1>Login</h1>
+  </header>
 
-<form action="{{ sessionsPath }}" method="post">
-  <div class="form-group">
-    <label for="username">Username</label>
-    <input type="text" class="form-control" name="username">
-  </div>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="text" class="form-control" name="email">      
-  </div>
-  <div class="form-group">
-    <input type="submit" class="btn btn-primary">
-  </div>
-</form>
+  <form action="{{ sessionsPath }}" method="post">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" name="username">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" name="email">      
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" formaction="{{ usersPath }}">Register</button>
+    </div>
+  </form>
+</div>

@@ -79,8 +79,10 @@ app.use((req, res, next) => {
 // ----------------------------------------
 const sessions = require('./routes/sessions')(app);
 const profiles = require('./routes/profiles');
+const users = require('./routes/users');
 app.use('/', sessions);
 app.use('/profiles', profiles);
+app.use('/users', users);
 
 // ----------------------------------------
 // Template Engine
@@ -102,7 +104,7 @@ app.set('view engine', 'handlebars');
 // ----------------------------------------
 const port = process.env.PORT ||
              process.argv[2] ||
-             4002;
+             4003;
 const host = 'localhost';
 
 let args;

@@ -1,4 +1,5 @@
 .navbar {
+  margin-bottom: 0px;
   border-radius: 0px;
 }
 
@@ -17,11 +18,33 @@
 .profile-picture {
   border: solid 2px #444;
   border-radius: 5px;
+  max-width: 250px;
 }
 
-.profile-header {
-  border-radius: 5px;
-  background-color: #A3D4FA;
-  padding: 2em 0;
+.jumbotron {
+  background-color: #C7F0FE;
   margin-bottom: 1em;
+}
+
+.alert {
+  margin-bottom: 0px;
+}
+
+.icon-bar {
+  background-color: white;
+}
+
+
+@media (max-width: 767px) {
+  .dropdown-menu>li>a {
+    color:white;
+  }
+}
+
+a.navbar-brand:hover {
+  color:black;
+}
+
+a:hover {
+  transition: color .5s ease, background-color .5s ease;
 }

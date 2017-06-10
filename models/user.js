@@ -2,7 +2,14 @@
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {
     username: DataTypes.STRING,
-    email: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+        isEmail: {
+          msg: "Email field must be properly formatted."
+        }
+      }
+    },
     profileId: DataTypes.INTEGER
   }, {
     classMethods: {

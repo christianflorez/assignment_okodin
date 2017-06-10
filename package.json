@@ -30,11 +30,12 @@
     "morgan": "^1.8.2",
     "pg": "^6.2.3",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.0.0",
+    "sequelize": "^3.30.4",
     "sequelize-cli": "^2.7.0"
   },
   "devDependencies": {
     "browser-sync": "^2.18.12",
+    "country-city": "^1.0.0",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.2.1",
     "lorem-ipsum": "^1.0.4"

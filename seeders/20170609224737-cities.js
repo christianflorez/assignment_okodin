@@ -1,7 +1,6 @@
 'use strict';
 const models = require('../models');
-const MIN_SEEDS = require('./seeding-config').MIN_SEEDS;
-
+const cityNames = require('country-city').getCities("Norway");
 module.exports = {
   up: function (queryInterface, Sequelize) {
     /*
@@ -14,15 +13,14 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    let users = [];
-    for (var i = 0; i < MIN_SEEDS; i++) {
-      users.push({
-        username: `foobar${ i }`,
-        email: `foobar${ i }@baz.org`,
-        profileId: i + 1
+    let cities = [];
+    cityNames.forEach(name => {
+      cities.push({
+        name: name
       });
-    }
-    return queryInterface.bulkInsert('Users', users);
+    });
+
+    return queryInterface.bulkInsert('Cities', cities);
   },
 
   down: function (queryInterface, Sequelize) {
@@ -33,6 +31,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('Person', null, {});
     */
-    return queryInterface.bulkDelete('Users', null, {}, models.User);
+    return queryInterface.bulkDelete('Cities', null, {}, models.City);
   }
 };
