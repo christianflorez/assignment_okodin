@@ -25,3 +25,7 @@ localhost/likes
 find all where likee is current session user
 Then get profiles for likers
 easy peasey lemon cheesy
+
+Like.findAll({
+    where: { likerId:1 }
+  }).then(lg);

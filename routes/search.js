@@ -26,8 +26,7 @@ router.get('/', (req, res) => {
       include: [{
         all: true,
         include: [{ 
-          all: true,
-          include: [{ all: true}]
+          all: true
         }]
       }],
       transaction: t
@@ -49,6 +48,9 @@ router.get('/', (req, res) => {
       }
     })
     .then(city => {
+      if (!city && search) {
+        req.flash('error', 'Error: City could not be found');
+      }
       // either we found something, or default to user's city
       searchCity = city ? city.id : userCity;
       if (search) {

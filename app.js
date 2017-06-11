@@ -81,10 +81,14 @@ const sessions = require('./routes/sessions')(app);
 const profiles = require('./routes/profiles');
 const users = require('./routes/users');
 const search = require('./routes/search');
+const likes = require('./routes/likes');
+const views = require('./routes/views');
 app.use('/', sessions);
 app.use('/profiles', profiles);
 app.use('/users', users);
 app.use('/search', search);
+app.use('/likes', likes);
+app.use('/views', views);
 
 // ----------------------------------------
 // Template Engine

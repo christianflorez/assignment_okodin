@@ -1,0 +1,73 @@
+<div class="container likes-header">
+  <ul class="nav nav-pills">
+    <li class="active"><a data-toggle="tab" href="#likers">Who's Liked You</a></li>
+    <li><a data-toggle="tab" href="#likees">Who You Like</a></li>
+    <li><a data-toggle="tab" href="#matches">You Like Each Other!</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="likers" class="tab-pane fade in active">
+      <h3>See who's liked you!</h3>
+      {{#if likers.length }}
+        <div class="row">
+          {{#each likers as |liker| }}
+            <div class="col-md-4 profiles-view">
+              <div class="profile-box">
+                <img src="/images/viking_{{ liker.Profile.gender }}.jpg" alt="" class="responsive">
+                <h4><a href="{{ profilePath liker.Profile.id }}">{{ liker.username }}</a></h4>
+                <p>{{ liker.Profile.age }} years old</p>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{else }}
+      <div class="row">
+        <h3>Sorry, no one's liked you yet! Don't worry, good things come to those who wait!</h3>
+      </div>
+      {{/if }}
+    </div>
+
+    <div id="likees" class="tab-pane fade">
+      <h3>See who you've liked!</h3>
+      {{#if likees.length }}
+        <div class="row">
+          {{#each likees as |likee| }}
+            <div class="col-md-4 profiles-view">
+              <div class="profile-box">
+                <img src="/images/viking_{{ likee.Profile.gender }}.jpg" alt="" class="responsive">
+                <h4><a href="{{ profilePath likee.Profile.id }}">{{ likee.username }}</a></h4>
+                <p>{{ likee.Profile.age }} years old</p>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{else }}
+      <div class="row">
+        <h3>You haven't liked anyone yet! Get out there and start connecting!</h3>
+      </div>
+      {{/if }}
+    </div>
+
+    <div id="matches" class="tab-pane fade">
+      <h3>You two like each other!</h3>
+      {{#if matches.length }}
+        <div class="row">
+          {{#each matches as |match| }}
+            <div class="col-md-4 profiles-view">
+              <div class="profile-box">
+                <img src="/images/viking_{{ match.Profile.gender }}.jpg" alt="" class="responsive">
+                <h4><a href="{{ profilePath match.Profile.id }}">{{ match.username }}</a></h4>
+                <p>{{ match.Profile.age }} years old</p>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{else }}
+      <div class="row">
+        <h3>No matches yet. Just hang in there!</h3>
+      </div>
+      {{/if }}
+    </div>
+
+  </div>
+</div>

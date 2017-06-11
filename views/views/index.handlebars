@@ -1,0 +1,51 @@
+<div class="container likes-header">
+  <ul class="nav nav-pills">
+    <li class="active"><a data-toggle="tab" href="#viewers">Who's Viewed You</a></li>
+    <li><a data-toggle="tab" href="#viewees">Who You've Viewed</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="viewers" class="tab-pane fade in active">
+      <h3>See who's viewed you!</h3>
+      {{#if viewers.length }}
+        <div class="row">
+          {{#each viewers as |viewer| }}
+            <div class="col-md-4 profiles-view">
+              <div class="profile-box">
+                <img src="/images/viking_{{ viewer.Profile.gender }}.jpg" alt="" class="responsive">
+                <h4><a href="{{ profilePath viewer.Profile.id }}">{{ viewer.username }}</a></h4>
+                <p>{{ viewer.Profile.age }} years old</p>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{else }}
+      <div class="row">
+        <h3>Sorry, no one's viewed you yet! Don't worry, good things come to those who wait!</h3>
+      </div>
+      {{/if }}
+    </div>
+
+    <div id="viewees" class="tab-pane fade">
+      <h3>See who you've viewed!</h3>
+      {{#if viewees.length }}
+        <div class="row">
+          {{#each viewees as |viewee| }}
+            <div class="col-md-4 profiles-view">
+              <div class="profile-box">
+                <img src="/images/viking_{{ viewee.Profile.gender }}.jpg" alt="" class="responsive">
+                <h4><a href="{{ profilePath viewee.Profile.id }}">{{ viewee.username }}</a></h4>
+                <p>{{ viewee.Profile.age }} years old</p>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{else }}
+      <div class="row">
+        <h3>You haven't liked anyone yet! Get out there and start connecting!</h3>
+      </div>
+      {{/if }}
+    </div>
+
+  </div>
+</div>

@@ -76,3 +76,16 @@ a:hover {
   margin-top: 2em;
   border-bottom: solid 2px #666;
 }
+
+.like-button {
+  color: white;
+  background-color: #F33;
+  border-radius: 10px;
+  margin: auto;
+  width: 50%;
+  margin-bottom: 1em;
+}
+
+.likes-header {
+  margin-top: 2em;
+}

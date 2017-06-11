@@ -7,6 +7,7 @@ const User = models.User;
 const Profile = models.Profile;
 const Location = models.Location;
 const City = models.City;
+const View = models.View;
 const h = require('./../helpers/path-helpers').registered;
 const { parseParams } = require('./../helpers/profile-helpers');
 
@@ -15,24 +16,54 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  Profile.findById(req.params.id, {
-    include: [{
-      all: true,
-      include: [{ all: true }]
-    }]
-  })
-    .then(profile => { 
-      if (profile) {
-        let canEdit;
-        if (profile.User.id !== null && profile.User.id === req.session.currentUser.id) {
-          canEdit = true;
-        }
-        res.render('profiles/show', { profile, canEdit });
-      } else {
-        res.status(404).send('404 Not Found');
-      }
+  let canEdit;
+  let profile;
+  let currentUserId = req.session.currentUser.id;
+
+  sequelize.transaction(t => {
+    return Profile.findById(req.params.id, {
+      include: [{
+        all: true,
+        include: [{ all: true }]
+      }],
+      transaction: t
     })
-    .catch(e => res.status(500).send(e.stack));
+      .then(results => { 
+        profile = results;
+        if (profile) {
+          // this is the currently logged in user's profile
+          if (profile.User.id !== null && profile.User.id === currentUserId) {
+            canEdit = true;
+            return Promise.resolve();
+          // this is another user, so create a new view
+          } else if (profile.User.id !== null && profile.User.id !== currentUserId) {
+            let viewParams = {
+              viewerId: currentUserId,
+              vieweeId: profile.User.id
+            };
+            return View.findOrCreate({
+              defaults: viewParams,
+              where: viewParams,
+              transaction: t
+            });
+          }
+        } else {
+          res.status(404).send('404 Not Found');
+          return Promise.reject();
+        }
+      })
+      .then(() => {
+        res.render('profiles/show', { profile, canEdit });
+      })
+      .catch(e => {
+        if (e.errors) {
+          e.errors.forEach((err) => req.flash('error', err.message));
+          res.redirect('back');
+        } else {
+          res.status(500).send(e.stack);
+        }
+      });
+  });
 });
 
 router.get('/:id/edit', (req, res) => {
@@ -50,7 +81,14 @@ router.get('/:id/edit', (req, res) => {
         res.redirect('back');
       }
     })
-    .catch(e => res.status(500).send(e.stack));
+    .catch(e => {
+      if (e.errors) {
+        e.errors.forEach((err) => req.flash('error', err.message));
+        res.redirect('back');
+      } else {
+        res.status(500).send(e.stack);
+      }
+    });
 });
 
 router.put('/:id', (req, res) => {
@@ -69,7 +107,8 @@ router.put('/:id', (req, res) => {
       return Profile.update(profileParams, {
         where: { id: profile.id },
         transaction: t
-      })
+      });
+    })
     .then(() => {
       return City.findOrCreate({
         default: {
@@ -106,7 +145,6 @@ router.put('/:id', (req, res) => {
       } else {
         res.status(500).send(e.stack);
       }
-      });
     });
   });
 });
