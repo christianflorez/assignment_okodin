@@ -48,7 +48,7 @@ module.exports = {
         age: Math.floor(Math.random() * (maxAge - minAge)) + minAge,
         maritalStatus: maritalState[i % maritalState.length],
         height: Math.floor(Math.random() * (maxHeight - minHeight)) + minHeight,
-        bodyType: bodyTypes[i % bodyTypes.length],
+        bodyType: bodyTypes[Math.floor(Math.random() * (bodyTypes.length))],
         kids: i % 2 === 0,
         occupation: lorem({
               count: 1,

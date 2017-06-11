@@ -27,7 +27,7 @@ module.exports = (app) => {
         }
       })
         .then(user => {
-          res.redirect(h.profilePath(user.profileId));
+          res.redirect(h.searchPath());
         })
         .catch(e => res.status(500).send(e.stack));
     } else {
@@ -55,7 +55,7 @@ module.exports = (app) => {
             id: user.id,
           };
           req.flash('success', 'Welcome back!');
-          res.redirect(h.profilePath(user.profileId));
+          res.redirect(h.searchPath());
         } else {
         // else sends them back to login
           req.flash('error', 'Error: User could not be found.');

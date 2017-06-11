@@ -3,19 +3,44 @@ const parseSearch = (search, locations) => {
     locationId: locations
   };
 
-  if (search.profile.minAge) {
-    results.age = { $gte: search.profile.minAge };
-  }
+  if (search) {
+    if (search.profile.minAge && search.profile.maxAge) {
+      results.age = {
+        $between: [search.profile.minAge, search.profile.maxAge]
+      };
+    } else {
+      if (search.profile.minAge) {
+        results.age = { $gte: search.profile.minAge };
+      }
+      if (search.profile.maxAge) {
+        results.age = { $lte: search.profile.maxAge };
+      }
+    }
+    
+    if (search.profile.minHeight && search.profile.maxHeight) {
+      results.height = {
+        $between: [searc.profile.minHeight, search.profile.maxHeight]
+      };
+    } else {
+      if (search.profile.minHeight) {
+        results.height = { $gte: search.profile.minHeight };
+      }
+      if (search.profile.maxHeight) {
+        results.height = { $lte: search.profile.maxHeight };
+      }
+    }
 
-  if (search.profile.maxAge) {
-    results.age = { $lte: search.profile.maxAge };
-  }
 
-  delete search.profile.minAge;
-  delete search.profile.maxAge;
+    delete search.profile.minAge;
+    delete search.profile.maxAge;
+    delete search.profile.minHeight;
+    delete search.profile.maxHeight;
 
-  for (let key in search.profile) {
-    results[key] = search.profile[key];
+    for (let key in search.profile) {
+      if (search.profile[key]) {
+        results[key] = search.profile[key];
+      }
+    }
   }
 
   return results;
