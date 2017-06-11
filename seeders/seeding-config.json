@@ -1,5 +1,5 @@
 {
-  "MIN_SEEDS": 10,
+  "MIN_SEEDS": 5000,
   "genders": ["male", "female", "other"],
   "maritalState": ["single", "seeing someone", "married", "other"],
   "minHeight": 72,

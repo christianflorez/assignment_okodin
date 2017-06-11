@@ -80,8 +80,32 @@ many: user.js/location
 one: skills.js/profileId
 One to MAny
 
+User.find()
+Location.findAll({
+  where: {cityId: 3},
+  include: [{
+    all: true,
+    include: [{ all: true }]
+  }]
+}).then(data => {console.log(JSON.stringify(data.Profiles, null, 2))})
+
+Location.findAll({
+  where: {cityId: 3},
+   include: [{
+    all: true,
+    include: [{ all: true }]
+  }]
+}).then(data => {
+  data.forEach(el => { console.log(JSON.stringify(el.Profiles, null, 2))})
+})
+above query should help us figure out location stuff
 
 
+Profile.findAll({
+  where: {
+    locationId: [1, 4, 6]
+  }
+}).then(lg)
 
 Tomorrow:
 Include more validations for profile/location/etc.
@@ -91,3 +115,15 @@ So
 Profile.findAll(where distance lte Y and location = yourLocation)
 Then use bootstrap Tabs to flesh out other stuff
 Then the last part is to build out views/likes
+
+Location.findAll({
+          where: { cityId: 20 }
+        }).then(lg)
+
+        Location.findAll({
+          where: { 
+            cityId: 1,
+            distance: { $lte: 90 },
+            distance: { $gte: 20 }
+          }
+        }).then(lg)

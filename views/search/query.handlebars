@@ -1,0 +1,53 @@
+<div class="container search-query">
+  <ul class="nav nav-pills">
+    <li class="active"><a data-toggle="tab" href="#basic">Basic</a></li>
+    <li><a data-toggle="tab" href="#appearance">Appearance</a></li>
+    <li><a data-toggle="tab" href="#family">Family</a></li>
+  </ul>
+
+  <form action="{{ searchPath}}" method="get">
+    <div class="tab-content">
+      <div id="basic" class="tab-pane fade in active">
+        <h3>Basic</h3>
+        <div class="form-group">
+          <label for="search_city">City</label>
+          <input type="text" id="search_city" name="search[location][city]" class="form-control" value="{{ cityName }}">
+        </div>
+        <div class="form-group">
+          <label for="search_distance">Distance</label>
+          <input type="text" id="search_distance" name="search[location][distance]" class="form-control" value="{{ distance }}">
+        </div>
+        <div class="form-group">
+          <label for="search_min_age">Min Age</label>
+          <input type="number" id="search_min_age" name="search[profile][minAge]" class="form-control" min="18" value="{{ minAge }}">
+        </div>
+        <div class="form-group">
+          <label for="search_max_age">Max Age</label>
+          <input type="number" id="search_max_age" name="search[profile][maxAge]" class="form-control" min="18" value="{{ maxAge }}">
+        </div>
+      </div>
+      <div id="appearance" class="tab-pane fade">
+        <h3>Appearance</h3>
+        <div class="form-group">
+          <label for="search_bodyType">Body Type</label>
+          {{!--<input type="text" id="search_bodyType" name="search[profile][bodyType]" class="form-control" value="{{ cityName }}">--}}
+          <select class="form-control" name="search[profile][bodyType]" id="search_bodyType">
+            <option value="thin">Thin</option>
+            <option value="overweight">Overweight</option>
+            <option value="Average">Average</option>
+            <option value="fit">Fit</option>
+            <option value="jacked">Jacked</option>
+            <option value="curvy">Curvy</option>
+          </select>
+        </div>
+      </div>
+      <div id="family" class="tab-pane fade">
+        <h3>Family</h3>
+        <p>Some content in menu 2.</p>
+      </div>
+    </div>
+  <div class="form-group">
+    <input type="submit" class="btn btn-primary btn-block">
+  </div>
+  </form>
+</div>

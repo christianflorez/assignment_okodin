@@ -1,0 +1,23 @@
+{{> search/query }}
+
+<div class="container">
+  <h3>Search Results:</h3>
+  {{#if profiles.length }}
+  <div class="row">
+    {{#each profiles as |profile| }}
+      <div class="col-md-4 profiles-view">
+        <div class="profile-box">
+          <img src="/images/viking_{{ profile.gender }}.jpg" alt="" class="responsive">
+          <h4><a href="{{ profilePath profile.id }}">{{ profile.User.username }}</a></h4>
+          <p>{{ profile.age }} years old</p>
+          <p>Lives {{profile.Location.distance}} miles from {{profile.Location.City.name}}</p>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  {{else }}
+  <div class="row">
+    <h3>Sorry, no users could be found! Try a different search?</h3>
+  </div>
+  {{/if }}
+</div>

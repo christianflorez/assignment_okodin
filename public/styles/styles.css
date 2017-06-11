@@ -48,3 +48,31 @@ a.navbar-brand:hover {
 a:hover {
   transition: color .5s ease, background-color .5s ease;
 }
+
+.profile-box img {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.profiles-view {
+  text-align: center;
+}
+
+.profile-box {
+  border: solid 1px #666;
+  border-radius: 30px;
+  margin-bottom: 2em;
+}
+
+.profile-box h4 {
+  display:block;
+  background-color: #C7F0FE;
+  padding: .5em 0;
+  border-top: solid 1px #666;
+  border-bottom: solid 1px #666;
+}
+
+.search-query {
+  margin-top: 2em;
+  border-bottom: solid 2px #666;
+}

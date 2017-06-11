@@ -59,7 +59,7 @@ router.put('/:id', (req, res) => {
   let distance = req.body.profile.location.distance;
   let userId = req.session.currentUser.id;
 
-  sequelize.transaction( t => {
+  sequelize.transaction(t => {
     return Profile.findOrCreate({
       default: profileParams,
       where: { userId: userId },

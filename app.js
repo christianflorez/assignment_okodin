@@ -80,9 +80,11 @@ app.use((req, res, next) => {
 const sessions = require('./routes/sessions')(app);
 const profiles = require('./routes/profiles');
 const users = require('./routes/users');
+const search = require('./routes/search');
 app.use('/', sessions);
 app.use('/profiles', profiles);
 app.use('/users', users);
+app.use('/search', search);
 
 // ----------------------------------------
 // Template Engine
