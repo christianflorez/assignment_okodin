@@ -1,31 +1,26 @@
-# assignment_okodin
-Build a dating app so Viking thunder gods can find love &lt;3
+# OkOdin
 
-Name: Christian Florez
+## Introduction
+OkOdin is a light clone of OkCupid, leveraging PostgreSQL and Node/Express to create an app that mimics many of OkCupid's functionality.
 
+## Technologies Used
+PostgreSQL/Sequelize, Node, Express
 
-what remains?
-views/likes
+## Getting Started
+Clone the repository and install dependencies. Set up a local Postgres database on your machine under the name `assignment_okodin_development`. Verify that it is working by running `npm run seeds` to populate the database with mock users.
 
-for likes ->
-add like button on every profile
-takes you to 
+## Deployment Link
+A deployed version of this project may be found [here.](https://hidden-chamber-99115.herokuapp.com/search)
 
-localhost/like POST with invisible form input
-Like.findOrCreate
+Login with the following information:
 
-Like is two ids
-likerId (userId)
-likeeId (userId)
+Username: foobar1@baz.org
 
-Viewer is same structure
+Email: foobar1
 
-then
-localhost/likes
-find all where likee is current session user
-Then get profiles for likers
-easy peasey lemon cheesy
+You may replace the digit in both username and email with any other digit up to 7999.
 
-Like.findAll({
-    where: { likerId:1 }
-  }).then(lg);
+## Additional Notes
+OkOdin mimics many of OkCupid's features. Try change the user profile, or liking a different user. You can also try opening different user's profiles, then logging into that user and checking the views tab. You'll notice that OkOdin saves all these views to the database. 
+
+This project uses advanced SQL inserts and joins in order to enable this functionality. Additionally, models are atomicized in order to allow for more granular searching, while also opening up future queries to be more dynamic. 
