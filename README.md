@@ -3,7 +3,7 @@
 [![OkOdin](http://i.imgur.com/8JpTJha.png)](https://hidden-chamber-99115.herokuapp.com/)
 
 ## Introduction
-OkOdin is a light clone of OkCupid, leveraging PostgreSQL and Node/Express to create an app that mimics many of OkCupid's functionality.
+OkOdin is a light clone of OkCupid, leveraging PostgreSQL and Node/Express to create an app that mimics much of OkCupid's functionality.
 
 ## Technologies Used
 PostgreSQL/Sequelize, Node, Express
